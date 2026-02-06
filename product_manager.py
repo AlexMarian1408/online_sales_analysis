@@ -9,7 +9,12 @@ class ProductManager:
         self.products.append(product)
 
     def remove_product(self, name):
-        self.products = [p for p in self.products if p.name != name ]
+        initial_count = len(self.products)
+        self.products = [p for p in self.products if p.name != name]
+        if len(self.products) < initial_count:
+            print(f"Product '{name}' removed.")
+        else:
+            print(f"Product '{name}' not found")
 
     def show_products(self):
         if not self.products:
